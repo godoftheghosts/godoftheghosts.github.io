@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Bangaram 🤍</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* Pages */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.page.active {
+  display: flex;
+}
+
+/* Highlight */
+.name {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 0 0 15px white;
+}
+
+/* Text */
+.quote {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.controls {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+/* Animations */
+.fade { animation: fadeIn 2s ease; }
+.slide { animation: slideUp 2s ease; }
+.zoom { animation: zoomIn 2s ease; }
+.rotate { animation: rotateIn 2s ease; }
+.glow { animation: glow 2s infinite alternate; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(80px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rotateIn {
+  from { transform: rotate(-10deg); opacity: 0; }
+  to { transform: rotate(0); opacity: 1; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px white; }
+  to { text-shadow: 0 0 30px white; }
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  color: white;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from {
+    bottom: -10%;
+    opacity: 1;
+  }
+  to {
+    bottom: 110%;
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Page 1 -->
+<div class="page active fade">
+  <div>
+    <div class="name glow">Bangaram 🤍</div>
+    <div class="quote">
+      I am here, steady and present.<br>
+      No matter what, I stand with you — always.
+    </div>
+  </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page slide">
+  <div>
+    <div class="name">Bangaram 🤍</div>
+    <div class="quote">
+      I am deep into this journey with you.<br>
+      Not for moments — for a lifetime.
+    </div>
+  </div>
+</div>
+
+<!-- Page 3 -->
+<div class="page zoom">
+  <div>
+    <div class="name">Bangaram 🤍</div>
+    <div class="quote">
+      I won’t walk away, I won’t disappear.<br>
+      My presence is constant, my intention is clear.
+    </div>
+  </div>
+</div>
+
+<!-- Page 4 -->
+<div class="page rotate">
+  <div>
+    <div class="name">Bangaram 🤍</div>
+    <div class="quote">
+      Strength, trust, patience — I carry them for us.<br>
+      I choose you every single day.
+    </div>
+  </div>
+</div>
+
+<!-- Page 5 -->
+<div class="page fade">
+  <div>
+    <div class="name glow">Bangaram 🤍</div>
+    <div class="quote">
+      I am deeply committed to us.<br>
+      No doubts. No distance. Just forever.
+    </div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <button onclick="prevPage()">⬅ Previous</button>
+  <button onclick="nextPage()">Next ➡</button>
+</div>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll('.page');
+
+function showPage(index) {
+  pages.forEach(p => p.classList.remove('active'));
+  pages[index].classList.add('active');
+}
+
+function nextPage() {
+  current = (current + 1) % pages.length;
+  showPage(current);
+}
+
+function prevPage() {
+  current = (current - 1 + pages.length) % pages.length;
+  showPage(current);
+}
+
+/* Hearts Generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "🤍";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>
